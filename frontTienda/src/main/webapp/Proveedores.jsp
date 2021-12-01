@@ -85,7 +85,7 @@
 						<div>
 							<form class="form-sign" method="get" action="Controlador">
 								<div class="form-group">
-									<input type="hidden" name="menu" value="Clientes"> <input
+									<input type="hidden" name="menu" value="Proveedores"> <input
 										type="hidden" name="txtid"
 										value="${proveedorSeleccionado.get_id()}"> 
 										<label>Nit:</label>
@@ -114,7 +114,7 @@
 								</div>
 								<input type="submit" class="btn btn-primary" name="accion"
 									value="Agregar">
-									<input type="submit" class="btn btn-success" name="accion" 
+								<input type="submit" class="btn btn-success" name="accion" 
 									value="Actualizar">
 							</form>
 						</div>

@@ -22,6 +22,7 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="form-group d-flex">
+						
 							<div class="col-sm-6 d-flex">
 								<input type="date" name="fecha" class="form-control" value="${fechaSeleccionada}">
 							</div>
@@ -46,8 +47,8 @@
 						<div class="form-group">
 							<label>Datos Clientes </label>
 						</div>
-						<input type="hidden" name="menu" value="Ventas"> <input
-							type="hidden" name="UsuarioActivo" value="${usuarioSeleccionado.getCedula_usuario()}">
+						<input type="hidden" name="menu" value="Ventas"> 
+						<input type="hidden" name="UsuarioActivo" value="${usuarioSeleccionado.getCedula_usuario()}">
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
 								<input type="number" name="cedulacliente" class="form-control"

@@ -132,16 +132,18 @@ public class Controlador extends HttpServlet {
 	//******************************************************************************************************************+
 	//*********************+METODO PARA GENERAR EL CONSECUTIVO DE LA FACTURA DE VENTAS**************************************+
 	 public Long generarConsecutivo() {
+		 
 		 long aux=0;
 		 try {
 			ArrayList<Ventas> listav=VentaJSON.getJSON();
 			for(Ventas venta:listav) {
+				
 				if(venta.getCodigo_venta()>aux) {
-					System.out.println("Codigo"+venta.getCodigo_venta());
+					
 					aux=venta.getCodigo_venta();
-					System.out.println("Auxiliar"+aux);
+					
 				}
-				System.out.println(aux+1);
+				
 				return (aux+1);
 				
 			}
@@ -591,13 +593,12 @@ public class Controlador extends HttpServlet {
 				
 			}else if(accion.equals("BuscarProductos")) {
 				String id=request.getParameter("cedulacliente");
-				this.buscarCliente(id, request, response);
-				
-				
 				String cod=request.getParameter("codigoproducto");
-				this.buscarProducto(cod, request, response);
 				
+				this.buscarCliente(id, request, response);				
+				this.buscarProducto(cod, request, response);
 				this.mostrarFechaCiudad(request, response);
+				
 			}else if(accion.equals("AgregarProducto")){
 				String id=request.getParameter("cedulacliente");
 				this.buscarCliente(id, request, response);
@@ -612,7 +613,7 @@ public class Controlador extends HttpServlet {
 				cantidad=Integer.parseInt(request.getParameter("cantidadproducto"));
 				iva=Double.parseDouble(request.getParameter("ivaproducto"));
 				
-				subtotal=precio*cantidad;
+				subtotal=(precio*cantidad);
 				valor_iva=(subtotal*iva)/100;
 				
 				detalle_venta.setCodigo_detalle_venta(item);	
@@ -625,14 +626,13 @@ public class Controlador extends HttpServlet {
 				detalle_venta.setValor_venta(subtotal);
 				listaVentas.add(detalle_venta);
 				
-				for(int i=0;i<listaVentas.size();i++) {
+				for(int i = 0; i < listaVentas.size(); i++) {
 					acusubtotal+=listaVentas.get(i).getValor_venta();
 					subtotaliva+=listaVentas.get(i).getValor_iva();
 					
 				}
 				totalapagar=acusubtotal+subtotaliva;
 				detalle_venta.setValor_total(totalapagar);
-				
 				
 				
 				request.setAttribute("listaventas",listaVentas);
@@ -643,12 +643,15 @@ public class Controlador extends HttpServlet {
 				
 			}else if(accion.equals("GenerarVenta")){
 					
-					cedulaCliente=request.getParameter("cedulacliente");
+					cedulaCliente=request.getParameter("cedulaCliente");
+					System.out.println(cedulaCliente);
 					String numFact = request.getParameter("numerofactura");
 					
 					Ventas ventas = new Ventas();
+					
 					ventas.setCodigo_venta(Long.parseLong(numFact));
 					ventas.setCedula_cliente(cedulaCliente);
+
 					ventas.setCedula_usuario(usuario.getCedula_usuario());
 					ventas.setValor_venta(acusubtotal);
 					ventas.setIva_venta(subtotaliva);
@@ -684,8 +687,8 @@ public class Controlador extends HttpServlet {
 					subtotaliva=0;
 				}else {
 				
-					
 				numfac=this.generarConsecutivo();
+				
 				request.setAttribute("numerofactura",numfac);
 			}
 		

@@ -12,7 +12,7 @@ import co.edu.unbosque.frontTienda.models.Detalle_Ventas;
 
 public class Detalle_VentaJSON {
 	private static URL url;
-	private static String sitio = "http://localhost:8084/";
+	private static String sitio = "http://localhost:8081/";
 
 	
 

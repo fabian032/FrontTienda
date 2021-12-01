@@ -19,7 +19,7 @@ import co.edu.unbosque.frontTienda.models.Ventas;
 
 public class VentaJSON {
 	private static URL url;
-	private static String sitio = "http://localhost:8084/";
+	private static String sitio = "http://localhost:8081/";
 
 	
 	//**************************Metodos que permiten mostar la informacion de clientes
@@ -37,7 +37,7 @@ public class VentaJSON {
 				venta.setCedula_usuario(innerObj.get("cedula_usuario").toString());
 				venta.setIva_venta(Double.parseDouble(innerObj.get("iva_venta").toString()));
 				venta.setTotal_venta(Double.parseDouble(innerObj.get("total_venta").toString()));
-				venta.setValor_venta(Double.parseDouble(innerObj.get("iva_compra").toString()));
+				venta.setValor_venta(Double.parseDouble(innerObj.get("valor_venta").toString()));
 				
 				lista.add(venta);
 			}
@@ -84,6 +84,8 @@ public class VentaJSON {
 				+"\",\"fecha_venta\":\""+venta.getFecha_venta()
 				+"\",\"ciudad_venta\":\""+venta.getCiudad_venta()
 				+ "\"}";
+		
+		System.out.println("metodo JSON"+venta.getCedula_cliente());
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);

@@ -21,7 +21,7 @@ import co.edu.unbosque.frontTienda.models.Consolidado;
 public class ConsolidadoJSON {
 
 	private static URL url;
-	private static String sitio = "http://localhost:8085/";
+	private static String sitio = "http://localhost:8084/";
 	
 	public static ArrayList<Consolidado> parsingConsolidado(String json) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
