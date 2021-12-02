@@ -22,7 +22,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
+<link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
 </head>
 
 <body>
@@ -91,27 +91,27 @@
 										value="${clienteSeleccionado.get_id()}"> 
 										<label>Cedula:</label>
 									<input type="text" name="txtcedula" class="form-control"
-										value="${clienteSeleccionado.getCedula_cliente()}">
+										value="${clienteSeleccionado.getCedula_cliente()}" required>
 								</div>
 								<div class="form-group">
 									<label>Nombre:</label>
 									 <input type="text" name="txtnombre"class="form-control"
-										value="${clienteSeleccionado.getNombre_cliente()}">
+										value="${clienteSeleccionado.getNombre_cliente()}" required>
 								</div>
 								<div class="form-group">
 									<label>Direccion:</label> <input type="text" name="txtdireccion"
 										class="form-control"
-										value="${clienteSeleccionado.getDireccion_cliente()}">
+										value="${clienteSeleccionado.getDireccion_cliente()}" required>
 								</div>
 								<div class="form-group">
 									<label>Email:</label> <input type="text" name="txtemail"
 										class="form-control"
-										value="${clienteSeleccionado.getEmail_cliente()}">
+										value="${clienteSeleccionado.getEmail_cliente()}" required>
 								</div>
 								<div class="form-group">
 									<label>Telefono:</label> <input type="text"
 										name="txttelefono" class="form-control"
-										value="${clienteSeleccionado.getTelefono_cliente()}">
+										value="${clienteSeleccionado.getTelefono_cliente()}" required>
 								</div>
 								<input type="submit" class="btn btn-primary" name="accion"
 									value="Agregar">

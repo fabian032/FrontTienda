@@ -89,28 +89,28 @@
 										type="hidden" name="txtid"
 										value="${proveedorSeleccionado.get_id()}"> 
 										<label>Nit:</label>
-									<input type="text" name="txtnit" class="form-control"
-										value="${proveedorSeleccionado.getNit_proveedor()}">
+									<input  type="text" name="txtnit" class="form-control"
+										value="${proveedorSeleccionado.getNit_proveedor()}" required>
 								</div>
 								<div class="form-group">
 									<label>Ciudad:</label>
 									 <input type="text" name="txtciudad"class="form-control"
-										value="${proveedorSeleccionado.getCiudad_proveedor()}">
+										value="${proveedorSeleccionado.getCiudad_proveedor()}" required>
 								</div>
 								<div class="form-group">
 									<label>Direccion:</label> <input type="text" name="txtdireccion"
 										class="form-control"
-										value="${proveedorSeleccionado.getDireccion_proveedor()}">
+										value="${proveedorSeleccionado.getDireccion_proveedor()}" required>
 								</div>
 								<div class="form-group">
 									<label>Nombre:</label> <input type="text" name="txtnombre"
 										class="form-control"
-										value="${proveedorSeleccionado.getNombre_proveedor()}">
+										value="${proveedorSeleccionado.getNombre_proveedor()}" required>
 								</div>
 								<div class="form-group">
 									<label>Telefono:</label> <input type="text"
 										name="txttelefono" class="form-control"
-										value="${proveedorSeleccionado.getTelefono_proveedor()}">
+										value="${proveedorSeleccionado.getTelefono_proveedor()}" required>
 								</div>
 								<input type="submit" class="btn btn-primary" name="accion"
 									value="Agregar">

@@ -24,13 +24,13 @@
 						<div class="form-group d-flex">
 						
 							<div class="col-sm-6 d-flex">
-								<input type="date" name="fecha" class="form-control" value="${fechaSeleccionada}">
+								<input type="date" name="fecha" class="form-control" value="${fechaSeleccionada}" required>
 							</div>
 							<div class="col-sm-3">
 								<label>Seleccione la ciudad</label> 
 							</div>
 							<div class="col-sm-3">
-									<select name="ciudad"class="form-select">
+									<select name="ciudad"class="form-select" required>
 									<option>${ciudadSeleccionada}</option> 
 									<option value="Bogota">Bogota</option>
 									<option value="Cali">Cali</option>
@@ -52,7 +52,7 @@
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
 								<input type="number" name="cedulacliente" class="form-control"
-									placeholder="Cedula cliente" value="${clienteSeleccionado.getCedula_cliente()}"> 
+									placeholder="Cedula cliente" value="${clienteSeleccionado.getCedula_cliente()}" required> 
 								<input
 									type="submit" name="accion" value="BuscarCliente"
 									class="btn btn-outline-info">
@@ -71,7 +71,7 @@
 						</div>
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
-								<input type="number" name="codigoproducto" class="form-control"placeholder="Codigo producto" value="${productoSeleccionado.getCodigo_producto()}"> 
+								<input type="number" name="codigoproducto" class="form-control"placeholder="Codigo producto" value="${productoSeleccionado.getCodigo_producto()}" required> 
 								<input type="submit" name="accion" value="BuscarProductos" class="btn btn-outline-info">
 							</div>
 							<div class="col-sm-6 d-flex">
