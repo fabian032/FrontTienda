@@ -71,7 +71,7 @@
 						</div>
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
-								<input type="number" name="codigoproducto" class="form-control"placeholder="Codigo producto" value="${productoSeleccionado.getCodigo_producto()}" required> 
+								<input type="number" name="codigoproducto" class="form-control"placeholder="Codigo producto" value="${productoSeleccionado.getCodigo_producto()}" > 
 								<input type="submit" name="accion" value="BuscarProductos" class="btn btn-outline-info">
 							</div>
 							<div class="col-sm-6 d-flex">
