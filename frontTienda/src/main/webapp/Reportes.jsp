@@ -34,55 +34,73 @@
      </form>
   </div>
   <div class="col-md-7 seccion2">
-     <div class="card">
-        <div class="card-body">
-           <div class="form-group">
-              <label>Detalle de reporte</label>
-           </div>
-           <table class="table">
-             <thead class="thead-drark">
-               <tr>
-                 <th scope="col">Cedula</th>
-                 <th scope="col">Nombre</th>
-                 <th scope="col">E-mail</th>
-                 <th scope="col">Direccion</th>
-                 <th scope="col">Telefono</th>
-                 </tr>
-                 </thead>
-                 <tbody >
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                 </tbody>
-                 
-                 <thead class="thead-drark">
-               <tr>
-                 <th scope="col">Codigo venta</th>
-                 <th scope="col">Cedula Cliente</th>
-                 <th scope="col">Valor venta </th>
-                 <th scope="col">Valor Iva </th>
-                 <th scope="col">Valor Total</th>
-                 </tr>
-                 </thead>
-                 <tbody >
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    
-                  </tr>
-                 </tbody>
-           </table>
-        </div>
-     </div>
-  </div>
+			<div class="card">
+				<div class="card-body">
+					<div class="form-group">
+						<label>Detalle de reporte</label>
+					</div>
+					<table class="table">
+						<c:if test="${opcion==1}">
+							<thead class="thead-drark">
+								<tr>
+									<th scope="col">Cedula</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">E-mail</th>
+									<th scope="col">Direccion</th>
+									<th scope="col">Telefono</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="lista" items="${listaClientes}">
+									<tr>
+										<td>${lista.getCedula_cliente()}</td>
+										<td>${lista.getNombre_cliente()}</td>
+										<td>${lista.getEmail_cliente()}</td>
+										<td>${lista.getDireccion_cliente()}</td>
+										<td>${lista.getTelefono_cliente()}</td>
+
+									</tr>
+								</c:forEach>
+							</tbody>
+						</c:if>
+						<c:if test="${opcion==2}">	
+							<thead class="thead-drark">
+								<tr>
+									<th scope="col">Codigo venta</th>
+									<th scope="col">Cedula Cliente</th>
+									<th scope="col">Valor venta</th>
+									<th scope="col">Valor Iva</th>
+									<th scope="col">Valor Total</th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="lista" items="${listaVentas}">
+						
+						<tr>
+							<td>${lista.getCodigo_venta()}</td>
+							<td>${lista.getCedula_cliente()}</td>
+							<td>${lista.getValor_venta()}</td>
+							<td>${lista.getIva_venta()}</td>
+							<td>${lista.getTotal_venta()}</td>
+
+						</tr>
+						</c:forEach>
+						</tbody>
+							<div class="card-footer d-flex">
+								<div class="col-md-4">
+									<label>total</label><br>
+									<br>
+								</div>
+								<div class=col-md-4>
+									<input type="text" name="txtsubtotal" class="form-control"
+										placeholder="$00.000.0" disabled="disabled" value="${sumador}">
+								</div>
+							</div>
+						</c:if>
+					</table>
+				</div>
+				
+		</div>
 </div>
 
 </body>
