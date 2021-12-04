@@ -1,0 +1,83 @@
+html{
+	font-family: 'Gemunu Libre', sans-serif;
+	color: #fff;
+	background-color: #000;
+}
+
+body{
+	margin: 0;	
+	background-image: url('mando-play.jfif');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+header{
+	background-color: #000;
+	padding: 3rem 2rem;
+	font-size: 4rem;
+	text-align: center;
+}
+
+input{
+	font-size: 2rem;
+	border-radius: 5px;
+}
+
+label{
+	font-size: 3rem;
+	float: left;	
+}
+
+table{
+	text-align: center;
+	margin: 12rem auto;
+}
+
+button{
+	font-family: 'Gemunu Libre', sans-serif;
+	margin: 125px;
+	font-size: 2rem;
+	border-radius: 5px;
+}
+
+button:hover{
+	transition: background 0.3s ease;
+	background: #aaa;
+	cursor: pointer;
+}
+
+p{
+	margin: 0;
+	float: right;
+	position: sticky;
+}
+
+a{
+	float: left;
+	position: sticky;
+}
+
+/* p{ */
+/* 	margin: 0; */
+/* 	right: 1100px;     */
+/* 	float: right; */
+/* 	position: sticky; */
+/* 	bottom: 0; */
+/* } */
+
+/* a{ */
+/* 	float: left; */
+/* 	left: 1410px; */
+/* 	position: sticky; */
+/* 	bottom: 0; */
+/* 	right: 376px; */
+/* } */
+
+a:link{
+	color: #D73023;
+}
+
+a:hover{
+	transition: color 0.3s ease;
+	color: yellow;
+}

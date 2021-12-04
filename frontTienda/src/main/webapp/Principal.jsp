@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Página principal</title>
+<link rel="shortcut icon" href="css/mando-play.ico">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -23,7 +24,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#"> <img
-					src="img/shopping-cart.png" width="40" height="40"
+					src="css/pacman-ghosts.jfif" width="40" height="40"
 					class="d-inline-block align-text-top"> Sucursal:<span id="mensaje"></span>
 				</a>
 
