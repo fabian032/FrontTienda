@@ -13,7 +13,7 @@
 	crossorigin="anonymous">
 	
 </head>
-<body>
+<body style="background-color: #EE2828">
 	<nav class="navbar navbar-dark bg-dark">
 		<button type="button" data-bs-toggle="offcanvas"
 			data-bs-target="#offcanvas" aria-controls="offcanvas"
