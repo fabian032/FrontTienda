@@ -48,6 +48,7 @@ public class Controlador extends HttpServlet {
 
 	//*****************+VARIABLES GENERALES*********************************
 	double precio=0, valor_iva=0, iva=0, subtotal=0, totalapagar=0, acusubtotal=0, subtotaliva=0;
+	double totalventascali=0, totalventasbogota, totalventasmedellin=0,totalventasgeneral=0;
 	int cantidad=0,item=0;
 	long numfac=0;
 	String descripcion,cedulaCliente,codProducto, ciudad,fecha;
@@ -183,6 +184,25 @@ public class Controlador extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	 }
+	 //*********************************************************************************************************************
+	 //-------------------------------Buscar ventas por ciudad-------------------------------------------------------------
+	 public double totalVentasCiudad(String ciudad) {
+		 
+		 double acTotalVentas=0;
+		 
+		 try {
+			ArrayList<Consolidado> listac =ConsolidadoJSON.getJSON();
+			for(Consolidado consolidar:listac) {
+				if(consolidar.getCiudad_venta().equals(ciudad)) {
+					acTotalVentas+=consolidar.getTotal_ventas();
+					}
+			}
+			return acTotalVentas;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return acTotalVentas;
 	 }
 	 //*********************************************************************************************************************
 	 /*
@@ -696,8 +716,53 @@ public class Controlador extends HttpServlet {
 			request.getRequestDispatcher("/Ventas.jsp").forward(request, response);
 			break;
 		case "Reportes":
+			int opcion=0;
+			
+			if(accion.equals("ReporteClientes")) {
+				try {
+					ArrayList<Clientes> lista =ClienteJSON.getJSON();
+					opcion=1;
+					request.setAttribute("listaClientes", lista);
+					request.setAttribute("opcion", opcion);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(accion.equals("ReporteVentas")) {
+				int sum=0;
+				try {
+					ArrayList<Ventas> lista=VentaJSON.getJSON();
+					
+					opcion=2;
+					for(int i = 0; i < lista.size(); i++) {
+						sum+=lista.get(i).getTotal_venta();
+					}
+					
+					request.setAttribute("listaVentas", lista);
+					request.setAttribute("opcion",opcion);
+					request.setAttribute("sumador", sum);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			request.getRequestDispatcher("/Reportes.jsp").forward(request, response);
 			break;
+			
+		case"Consolidar":
+			
+			
+			totalventascali=this.totalVentasCiudad("Cali");
+			totalventasbogota=this.totalVentasCiudad("Bogota");
+			totalventasmedellin=this.totalVentasCiudad("Medellin");
+			
+			totalventasgeneral=totalventascali+totalventasbogota+totalventasmedellin;
+			request.setAttribute("totalventascali", totalventascali);
+			request.setAttribute("totalventasbogota", totalventasbogota);
+			request.setAttribute("totalventasmedellin", totalventasmedellin);
+			request.setAttribute("totalventasgeneral",totalventasgeneral);
+			
+			request.getRequestDispatcher("/ReporteConsolidado.jsp").forward(request, response);
+			break;
+			
 		}
 	}
 

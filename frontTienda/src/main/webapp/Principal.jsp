@@ -99,8 +99,13 @@
 					</li>
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?menu=Reportes"
+						class="btn btn-outline-light" href="Controlador?menu=Reportes&accion=default"
 						target="myFrame" onclick="return validarMenu('reportes')">Reportes</a>
+					</li>
+					<li class="nav-item"><a
+						style="margin-left: 10px; border: none"
+						class="btn btn-outline-light" href="Controlador?menu=Consolidar&accion=default"
+						target="myFrame"onclick="return validarMenu('consolidado')" >Consolidado</a>
 					</li>
 				</ul>
 
