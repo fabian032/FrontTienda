@@ -69,10 +69,10 @@
 			<div style="background-color: #212529;" class="offcanvas-body">
 
 				<ul class="navbar-nav">
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?menu=Principal">Home</a>
-					</li>
+<!-- 					<li class="nav-item"><a -->
+<!-- 						style="margin-left: 10px; border: none" -->
+<!-- 						class="btn btn-outline-light" href="Controlador?menu=Principal">Home</a> -->
+<!-- 					</li> -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
 						class="btn btn-outline-light"

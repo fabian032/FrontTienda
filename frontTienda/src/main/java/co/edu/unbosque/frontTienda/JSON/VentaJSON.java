@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import co.edu.unbosque.frontTienda.models.Productos;
 import co.edu.unbosque.frontTienda.models.Ventas;
 
 public class VentaJSON {
@@ -26,8 +25,8 @@ public class VentaJSON {
 		public static ArrayList<Ventas> parsingVentas(String json) throws ParseException {
 			JSONParser jsonParser = new JSONParser();
 			ArrayList<Ventas> lista = new ArrayList<Ventas>();
-			JSONArray productos = (JSONArray) jsonParser.parse(json);
-			Iterator i = productos.iterator();
+			JSONArray ventas = (JSONArray) jsonParser.parse(json);
+			Iterator i = ventas.iterator();
 			while (i.hasNext()) {
 				JSONObject innerObj = (JSONObject) i.next();
 				Ventas venta = new Ventas();

@@ -21,13 +21,15 @@
 			<form method="get" action="Controlador">
 				<div class="card">
 					<div class="card-body">
+						<div class="form-group">
+							<label>Seleccione fecha</label>
+						</div>
 						<div class="form-group d-flex">
-						
 							<div class="col-sm-6 d-flex">
 								<input type="date" name="fecha" class="form-control" value="${fechaSeleccionada}" required>
 							</div>
 							<div class="col-sm-3">
-								<label>Seleccione la ciudad</label> 
+								<label>Seleccione la ciudad </label> 
 							</div>
 							<div class="col-sm-3">
 									<select name="ciudad"class="form-select" required>
@@ -80,7 +82,7 @@
 						</div>
 						<div class="form-group d-flex">
 							<div class="col-sm-6 d-flex">
-								<input type="text" name="precioproducto" class="form-control"placeholder="$ 0000.00" value="${productoSeleccionado.getPrecio_venta()}">
+								<input type="text" name="precioproducto" class="form-control"placeholder="$ 0000.00" value="${productoSeleccionado.getPrecio_compra()}">
 							</div>
 							<div class="col-sm-3">
 								<input type="number" name="cantidadproducto" class="form-control" placeholder="Cantidad" value="">
@@ -127,7 +129,7 @@
 								<td>${lista.getCodigo_producto()}</td>
 								<td>${lista.getNombre_producto()}</td>
 								<td>${lista.getPrecio_producto()}</td>
-								<td>${lista.getCantidad_producto()}</td>
+								<td>x ${lista.getCantidad_producto()}</td>
 								<td>${lista.getValor_iva()}</td>
 								<td>${lista.getValor_venta()}</td>
 
@@ -154,7 +156,7 @@
 			<div class="col md-8">
 				<a class="btn btn-success" onclick="print()" 
 				href="Controlador?menu=Ventas&accion=GenerarVenta&cedulaCliente=${clienteSeleccionado.getCedula_cliente()}&UsuarioActivo=${usuarioSeleccionado.getCedula_usuario()}&numerofactura=${numerofactura}">Generar Venta</a>
-				<a class="btn btn-danger"  href="">Cancelar Venta</a>
+				<a class="btn btn-danger" href="Controlador?menu=Ventas&accion=default">Cancelar Venta</a>
 			</div>
 		</div>
 	</div>

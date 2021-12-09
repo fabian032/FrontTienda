@@ -47,7 +47,7 @@ public class Controlador extends HttpServlet {
 	}
 
 	//*****************+VARIABLES GENERALES*********************************
-	double precio=0, valor_iva=0, iva=0, subtotal=0, totalapagar=0, acusubtotal=0, subtotaliva=0;
+	double precio=0, valor_iva=0, iva=0, subtotal=0, totalapagar=0, acusubtotal=0, subtotaliva=0, totalProducto = 0;
 	double totalventascali=0, totalventasbogota, totalventasmedellin=0,totalventasgeneral=0;
 	int cantidad=0,item=0;
 	long numfac=0;
@@ -98,13 +98,12 @@ public class Controlador extends HttpServlet {
 		
 	}
 	//------------------------------------------------------------------------------------------------------------------
-	//****************************GRABAR EN LA TABLA DETALLE TIENDAS***********************************************++
-	public void grabarDetalle_Venta(Long numFcat,HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		for(int i=0;i<listaVentas.size();i++) {
+	//****************************GRABAR EN LA TABLA DETALLE VENTAS***********************************************++
+	public void grabarDetalle_Venta(Long numFact,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			for(int i=0;i<listaVentas.size();i++) {
 			detalle_venta = new Detalle_Ventas();
-			
-			detalle_venta.setCodigo_venta(numFcat);
+						
+			detalle_venta.setCodigo_venta(numFact);
 			detalle_venta.setCodigo_producto(listaVentas.get(i).getCodigo_producto());
 			detalle_venta.setCantidad_producto(listaVentas.get(i).getCantidad_producto());
 			detalle_venta.setValor_venta(listaVentas.get(i).getValor_venta());
@@ -166,6 +165,7 @@ public class Controlador extends HttpServlet {
 		 request.setAttribute("ciudadSeleccionada",ciudad);
 		 
 	 }
+	 
 	 //**************************************************************************************************************
 	 //*******************************GRABAR CONSOLIDADO*****************************************
 	 public void grabarConsolidado(HttpServletRequest request, HttpServletResponse response)
@@ -627,6 +627,8 @@ public class Controlador extends HttpServlet {
 				detalle_venta=new Detalle_Ventas();
 				item++;
 				totalapagar=0;
+//				acusubtotal=0;
+//				subtotaliva=0;
 				codProducto=request.getParameter("codigoproducto");
 				descripcion=request.getParameter("nombreproducto");
 				precio=Double.parseDouble(request.getParameter("precioproducto"));
@@ -635,6 +637,7 @@ public class Controlador extends HttpServlet {
 				
 				subtotal=(precio*cantidad);
 				valor_iva=(subtotal*iva)/100;
+				totalProducto = subtotal + valor_iva;
 				
 				detalle_venta.setCodigo_detalle_venta(item);	
 				detalle_venta.setCodigo_producto(codProducto);
@@ -643,14 +646,19 @@ public class Controlador extends HttpServlet {
 				detalle_venta.setPrecio_producto(precio);
 				detalle_venta.setCodigo_venta(numfac);
 				detalle_venta.setValor_iva(valor_iva);
-				detalle_venta.setValor_venta(subtotal);
+				detalle_venta.setValor_venta(totalProducto);
 				listaVentas.add(detalle_venta);
 				
-				for(int i = 0; i < listaVentas.size(); i++) {
-					acusubtotal+=listaVentas.get(i).getValor_venta();
-					subtotaliva+=listaVentas.get(i).getValor_iva();
-					
-				}
+//				for(int i = 0; i < listaVentas.size(); i++) {
+//					acusubtotal+=listaVentas.get(i).getPrecio_producto();
+//					subtotaliva+=listaVentas.get(i).getValor_iva();
+//					
+//					
+//				}
+				
+				acusubtotal = acusubtotal + subtotal;
+				subtotaliva = subtotaliva + valor_iva;
+				
 				totalapagar=acusubtotal+subtotaliva;
 				detalle_venta.setValor_total(totalapagar);
 				
@@ -690,8 +698,8 @@ public class Controlador extends HttpServlet {
 						PrintWriter write =response.getWriter();
 						if(respuesta==200) {
 							System.out.println("Grabacion exitosa"+respuesta);
-							this.grabarConsolidado(request, response);
 							this.grabarDetalle_Venta(ventas.getCodigo_venta(), request, response);
+							this.grabarConsolidado(request, response);
 						}else {
 							write.println("Error ventas" +respuesta);
 						}
@@ -705,7 +713,15 @@ public class Controlador extends HttpServlet {
 					totalapagar=0;
 					acusubtotal=0;
 					subtotaliva=0;
+					
+					
+					
 				}else {
+				listaVentas.clear();
+				item=0;
+				totalapagar=0;
+				acusubtotal=0;
+				subtotaliva=0;
 				
 				numfac=this.generarConsecutivo();
 				
